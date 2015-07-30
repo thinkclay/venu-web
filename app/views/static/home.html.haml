@@ -47,38 +47,67 @@
 
 %h2 Forms
 
-.check.toggle
-  %input#check-toggle{ name: "check", type: "checkbox", value: "None" }/
-  %label{ for: "check-toggle" }
+= simple_form_for Example.new, html: { autocomplete: 'off' } do |f|
+  .left.column
+    = f.input :string
+    = f.input :integer, as: :integer
+    = f.input :float, as: :float
+    = f.input :decimal, as: :decimal
+    = f.input :range, as: :range
+    = f.input :square_solid_checkbox, as: :boolean, wrapper_html: { class: 'square solid' }
+    = f.input :email, as: :email
+    = f.input :url, as: :url
+    = f.input :phone, as: :tel
+    = f.input :password, as: :password
+    = f.input :search, as: :search
+    = f.input :uuid, as: :uuid
+    = f.input :file, as: :file
+    = f.input :date_time, as: :datetime
+    = f.input :date, as: :date
+    = f.input :time, as: :time
+    = f.input :select, as: :select, collection: { foo: 'bar', baz: 'bot' }
+    = f.input :radio, as: :radio_buttons, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'round solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
+    = f.input :checkbox, as: :check_boxes, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'square solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
 
-.check.slide
-  %input#check-slide{ name: "check", type: "checkbox", value: "None" }/
-  %label{ for: 'check-slide' }
+    .two.fields
+      = f.association :users, collection: User.all, label_method: ->(i){ i.email }, input_html: { 'data-width' => 200 }
+      = f.input :search, as: :search
 
-.check.switch
-  %input#check-switch{name: "check", type: "checkbox", value: "None"}/
-  %label{for: "check-switch"}
+    = f.submit
 
-.check.round.solid
-  %input#check-round-solid{name: "check", type: "checkbox", value: "None"}/
-  %label{for: "check-round-solid"}
+  .right.column
+    .check.toggle
+      %input#check-toggle{ name: "check", type: "checkbox", value: "None" }/
+      %label{ for: "check-toggle" }
 
-.check.round.mark
-  %input#check-radio-mark{name: "check", type: "checkbox", value: "None"}/
-  %label{for: "check-radio-mark"}
+    .check.slide
+      %input#check-slide{ name: "check", type: "checkbox", value: "None" }/
+      %label{ for: 'check-slide' }
 
-.check.square.solid
-  %input#check-square-solid{ name: "check", type: "checkbox", value: "None" }/
-  %label{ for: "check-square-solid" }
+    .check.switch
+      %input#check-switch{name: "check", type: "checkbox", value: "None"}/
+      %label{for: "check-switch"}
 
-.check.square.mark
-  %input#check-square-mark{ name: "check", type: "checkbox", value: "None" }/
-  %label{ for: "check-square-mark" }
+    .check.round.solid
+      %input#check-round-solid{name: "check", type: "checkbox", value: "None"}/
+      %label{for: "check-round-solid"}
 
-.check.rounded.dark
-  %input#check-rounded-dark{name: "check", type: "checkbox", value: "None"}/
-  %label{for: "check-rounded-dark"}
+    .check.round.mark
+      %input#check-radio-mark{name: "check", type: "checkbox", value: "None"}/
+      %label{for: "check-radio-mark"}
 
-.check.rounded.light
-  %input#check-rounded-light{name: "check", type: "checkbox", value: "None"}/
-  %label{for: "check-rounded-light"}
+    .check.square.solid
+      %input#check-square-solid{ name: "check", type: "checkbox", value: "None" }/
+      %label{ for: "check-square-solid" }
+
+    .check.square.mark
+      %input#check-square-mark{ name: "check", type: "checkbox", value: "None" }/
+      %label{ for: "check-square-mark" }
+
+    .check.rounded.dark
+      %input#check-rounded-dark{name: "check", type: "checkbox", value: "None"}/
+      %label{for: "check-rounded-dark"}
+
+    .check.rounded.light
+      %input#check-rounded-light{name: "check", type: "checkbox", value: "None"}/
+      %label{for: "check-rounded-light"}

@@ -10,7 +10,6 @@ en:
 
   admin:
     users: Users
-    posts: Posts
 
   auth:
     login_with_email: Login with Email

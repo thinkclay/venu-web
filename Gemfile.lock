@@ -27,6 +27,13 @@ GIT
       mime-types
       mimemagic (= 0.3.0)
 
+GIT
+  remote: git://github.com/unicorn/annex.git
+  revision: 9ea1a555aed9b7a812be67b9e796d43054807f82
+  specs:
+    annex-cms (0.3.8)
+      rails (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,7 +88,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bson (3.2.0)
+    bson (3.2.1)
     builder (3.2.2)
     cancan (1.6.10)
     capybara (2.4.4)
@@ -285,6 +292,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  annex-cms!
   aws-sdk (< 2.0)
   better_errors
   binding_of_caller
