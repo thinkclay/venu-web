@@ -1,0 +1,8 @@
+= simple_form_for(@resource, html: { multipart: true }) do |f|
+  = f.input :publish, as: :boolean, wrapper_html: { class: 'square solid' }
+  = f.input :publish_at, as: :datetime
+  = f.input :text, as: :text
+  = f.input :tweet, label: 'Tweet ID'
+  = f.input :image, as: :file
+
+  = f.button :submit, 'Save Post'

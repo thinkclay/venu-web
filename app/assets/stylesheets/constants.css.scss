@@ -1,0 +1,42 @@
+%clearfix {
+  &:after {
+    clear: both;
+    content: " ";
+    display: block;
+  }
+}
+
+%font_body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+%font_header {
+  font-family: 'Oswald', serif;
+}
+
+%font_display {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+  @extend %clearfix;
+  margin: 0 10%;
+  max-width: 1200px;
+  position: relative;
+}
+
+
+
+$base_light: #F4F0E8;
+$base_dark: #7C705F;
+$base_medium: #99896F;
+
+$brand_blue: #3D728E;
+$brand_green: #54835F;
+$brand_teal: #3D8C8E;
+$brand_orange: #B36E50;
+$brand_yellow: #C0A962;
+$brand_red: #B35050;
+
+$label_color: $base_medium;
+$link_color: $brand_teal;

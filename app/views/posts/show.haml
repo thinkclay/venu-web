@@ -1,0 +1,25 @@
+%h1 Views Post
+
+%table
+  %thead
+    %tr
+      %th Image
+      %th Text
+      %th Tweet
+      %th Published
+      %th Time
+  %tbody
+    %tr
+      %td
+        - if @resource.image.present?
+          %img{ src: @resource.image, width: 50 }
+        - else
+          No image uploaded
+      %td
+        %p= @resource.text
+      %td
+        %p= @resource.tweet
+      %td
+        = @resource.publish?
+      %td
+        = @resource.publish_at.to_time

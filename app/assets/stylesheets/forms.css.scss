@@ -1,0 +1,543 @@
+@import "constants";
+
+.input {
+  &.string, &.email, &.file, &.datetime, &.text, &.password {
+    label {
+      display: block;
+      font-size: 1.8rem;
+      padding: 1.5em 0 .5em;
+    }
+  }
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+  @extend %font_body;
+  background: darken($base_light, 5%);
+  box-sizing: border-box;
+  color: $base_dark;
+  border: 1px solid $base_medium;
+  font-size: 1.6rem;
+  font-weight: 500;
+  width: 100%;
+  padding: .75em;
+}
+
+input[type="submit"], .button {
+  @extend %font_header;
+  background: lighten($brand_teal, 10%);
+  border: none;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 1);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 100;
+  letter-spacing: .05em;
+  margin: 1.5em 0 .5em;
+  padding: .5em 1.25em;
+  text-transform: uppercase;
+
+  &.yellow {
+    background: lighten($brand_yellow, 10%);
+  }
+
+  &.red {
+    background: lighten($brand_red, 10%);
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1), inset 0 0 3px rgba(255, 255, 255, 0.8);
+    color: #fff;
+  }
+
+  &:active {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1), inset 0 0 3px rgba(0, 0, 0, 0.5);
+  }
+
+  &.mini {
+    font-size: 1rem;
+  }
+}
+
+.input.file {
+
+  input {
+    padding-top: 1rem;
+  }
+
+  input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  input::before {
+    @extend %font_header;
+    -webkit-user-select: none;
+    background: lighten($brand_blue, 10%);
+    border: none;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 0.8);
+    content: 'Select';
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 100;
+    letter-spacing: .05em;
+    margin: -.75em 0 .5em;
+    outline: none;
+    padding: .5em 1.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  input:hover::before {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1), inset 0 0 3px rgba(255, 255, 255, 0.8);
+    color: #fff;
+  }
+
+  input:active {
+    outline: 0;
+  }
+
+  input:active::before {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 1), inset 0 0 3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.check, .input.boolean {
+  margin: 20px 0;
+  position: relative;
+
+  input[type=checkbox] {
+    visibility: hidden;
+  }
+
+  label span {
+    display: block;
+    font-size: 1.8rem;
+    margin: .75rem 0 0 4rem;
+  }
+
+  &.toggle {
+    background: $base_dark;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 10px;
+    width: 50px;
+
+    label {
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      transition: all .4s ease;
+      cursor: pointer;
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+      background: lighten($base_light, 5%);
+    }
+
+    input[type=checkbox]:checked + label {
+      left: 37px;
+    }
+  }
+
+  &.slide {
+    background: $base_dark;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 30px;
+    width: 80px;
+
+    &:after {
+      background: darken($base_dark, 10%);
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+      content: '';
+      height: 2px;
+      left: 14px;
+      position: absolute;
+      top: 14px;
+      width: 52px;
+    }
+
+    label {
+      background: lighten($base_light, 5%);
+      border-radius: 50px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: block;
+      height: 22px;
+      left: 4px;
+      position: absolute;
+      top: 4px;
+      transition: all .4s ease;
+      width: 22px;
+      z-index: 1;
+
+      &:after {
+        background: $base_dark;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.9);
+        content: '';
+        height: 10px;
+        left: 6px;
+        position: absolute;
+        top: 6px;
+        width: 10px;
+      }
+    }
+
+    input[type=checkbox]:checked + label {
+      left: 54px;
+
+      &:after {
+        background: lighten($brand_blue, 20%);;
+      }
+    }
+  }
+
+
+  &.switch {
+    background: $base_dark;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    height: 26px;
+    width: 80px;
+
+    &:before, &:after {
+      @extend %font_header;
+      font-size: 1.2rem;
+      line-height: 2.2em;
+      position: absolute;
+      z-index: 0;
+    }
+
+    &:after {
+      color: darken($base_dark, 15%);
+      content: 'OFF';
+      right: 1.5rem;
+      text-shadow: 0 1px 0px rgba(255, 255, 255, 0.15);
+    }
+
+    &:before {
+      content: 'ON';
+      color: lighten($brand_blue, 20%);
+      left: 1.5rem;
+      text-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    label {
+      background: lighten($base_light, 5%);
+      border-radius: 50px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: block;
+      height: 20px;
+      left: 3px;
+      position: absolute;
+      top: 3px;
+      transition: all .4s ease;
+      width: 34px;
+      z-index: 1;
+    }
+
+    input[type=checkbox]:checked + label {
+      left: 43px;
+    }
+  }
+
+  &.round {
+    background: lighten($base_light, 5%);
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    height: 28px;
+    width: 28px;
+
+    &.solid {
+      label {
+        background: -moz-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -ms-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -o-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -webkit-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+        cursor: pointer;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99896F', endColorstr='#7C705F',GradientType=0 );
+        height: 20px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+
+        &:after {
+          background: lighten($brand_blue, 10%);
+          border-radius: 50px;
+          box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.6), 0px 1px 3px rgba(0, 0, 0, 0.5);
+          content: '';
+          height: 16px;
+          left: 2px;
+          opacity: 0;
+          position: absolute;
+          top: 2px;
+          width: 16px;
+        }
+
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+
+    &.mark {
+      label {
+        background: -moz-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -ms-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -o-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -webkit-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+        cursor: pointer;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$base_medium', endColorstr='$base_dark',GradientType=0 );
+        height: 20px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+
+        &:after {
+          -moz-transform: rotate(-45deg);
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+          background: transparent;
+          border: 3px solid lighten($base_light, 5%);
+          border-right: none;
+          border-top: none;
+          content: '';
+          filter: alpha(opacity = 0);
+          height: 5px;
+          left: 4px;
+          opacity: 0;
+          position: absolute;
+          top: 5px;
+          transform: rotate(-45deg);
+          width: 9px;
+        }
+
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.square {
+    background: lighten($base_light, 5%);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    height: 28px;
+    width: 28px;
+
+    &.solid {
+      label {
+        background: -moz-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -ms-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -o-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -webkit-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+        cursor: pointer;
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$base_medium', endColorstr='$base_dark',GradientType=0 );
+        height: 20px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        width: 20px;
+
+        &:after {
+          background: lighten($brand_blue, 10%);
+          box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.6), 0px 1px 3px rgba(0, 0, 0, 0.5);
+          content: '';
+          filter: alpha(opacity = 0);
+          height: 16px;
+          left: 2px;
+          opacity: 0;
+          position: absolute;
+          top: 2px;
+          width: 16px;
+        }
+
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+
+    &.mark {
+      label {
+        cursor: pointer;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 4px;
+        top: 4px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+        background: -webkit-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -moz-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -o-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -ms-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$base_medium', endColorstr='$base_dark',GradientType=0 );
+
+        &:after {
+          background: transparent;
+          border: 3px solid lighten($base_light, 5%);
+          border-right: none;
+          border-top: none;
+          content: '';
+          height: 5px;
+          left: 4px;
+          opacity: 0;
+          position: absolute;
+          top: 4px;
+          width: 9px;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.rounded {
+    width: 20px;
+
+    label {
+      border-radius: 4px;
+      cursor: pointer;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      width: 20px;
+    }
+
+    &.dark {
+      label {
+        background: $base_medium;
+        background: -moz-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -ms-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -o-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: -webkit-linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        background: linear-gradient(top, $base_medium 0%, $base_dark 100%);
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.4);
+
+        &:after {
+          background: transparent;
+          border: 3px solid lighten($base_light, 5%);
+          border-right: none;
+          border-top: none;
+          content: '';
+          height: 5px;
+          left: 4px;
+          opacity: 0;
+          position: absolute;
+          top: 4px;
+          width: 9px;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+          opacity: 0.3;
+        }
+      }
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+
+    &.light {
+      label {
+        background: lighten($base_light, 5%);
+        background: -webkit-linear-gradient(top, lighten($base_light, 5%) 0%, li 40%, $base_medium 100%);
+        background: -moz-linear-gradient(top, lighten($base_light, 5%) 0%, li 40%, $base_medium 100%);
+        background: -o-linear-gradient(top, lighten($base_light, 5%) 0%, li 40%, $base_medium 100%);
+        background: -ms-linear-gradient(top, lighten($base_light, 5%) 0%, li 40%, $base_medium 100%);
+        background: linear-gradient(top, lighten($base_light, 5%) 0%, li 40%, $base_medium 100%);
+        box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+
+        &:after {
+          background: transparent;
+          border: 3px solid $base_dark;
+          border-right: none;
+          border-top: none;
+          content: '';
+          height: 5px;
+          left: 4px;
+          opacity: 0;
+          position: absolute;
+          top: 4px;
+          width: 9px;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+
+        &:hover::after {
+          opacity: 0.5;
+        }
+      }
+
+      input[type=checkbox]:checked + label:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.two.fields {
+  @extend %clearfix;
+
+  div.input {
+    width: 48%;
+
+    &:first-child {
+      float: left;
+    }
+
+
+    &:last-child {
+      float: right;
+    }
+  }
+}
