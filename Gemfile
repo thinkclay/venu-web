@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # CMS
-# gem 'annex-cms', github: 'unicorn/annex'
+gem 'annex-cms', github: 'unicorn/annex'
 
 # Views
 gem 'active_model_serializers'

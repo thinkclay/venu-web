@@ -16,5 +16,5 @@
           %td= user.created_at.to_date
           %td= user.roles.join(', ').titleize unless user.roles.first.nil?
           %td
-            %a.yellow.button.mini{ href: edit_user_path(user) } edit
-            %a.red.button.mini{ href: user_path(user), data: { confirm: "Are you sure you want to delete?", method: :delete } } delete
+            %a.yellow.button.mini{ href: users_path, data: { confirm: "Sorry, this is disabled for demo!" } } edit
+            %a.red.button.mini{ href: users_path, data: { confirm: "Sorry, this is disabled for demo!" } } delete

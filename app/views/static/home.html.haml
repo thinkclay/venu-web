@@ -14,6 +14,8 @@
       Perhaps you would rather style a pull quote that's broken out and floated?
 
     %blockquote
+      %strong Look at this fancy blockquote!
+      %br/
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   .right.column
@@ -44,70 +46,100 @@
       %li
         Yep, that takes care of most scenarios
 
-
-%h2 Forms
-
-= simple_form_for Example.new, html: { autocomplete: 'off' } do |f|
+%section.row
   .left.column
-    = f.input :string
-    = f.input :integer, as: :integer
-    = f.input :float, as: :float
-    = f.input :decimal, as: :decimal
-    = f.input :range, as: :range
-    = f.input :square_solid_checkbox, as: :boolean, wrapper_html: { class: 'square solid' }
-    = f.input :email, as: :email
-    = f.input :url, as: :url
-    = f.input :phone, as: :tel
-    = f.input :password, as: :password
-    = f.input :search, as: :search
-    = f.input :uuid, as: :uuid
-    = f.input :file, as: :file
-    = f.input :date_time, as: :datetime
-    = f.input :date, as: :date
-    = f.input :time, as: :time
-    = f.input :select, as: :select, collection: { foo: 'bar', baz: 'bot' }
-    = f.input :radio, as: :radio_buttons, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'round solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
-    = f.input :checkbox, as: :check_boxes, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'square solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
+    %h3 Annex: Editable Text
+    %p
+      Below is editable content. To see the inline editor in action, you need to be logged in as an administrator.
+      Login with:
+    %blockquote
+      user:
+      %strong hello@unicorn.xxx
+      %br/
+      password:
+      %strong manticore
 
-    .two.fields
-      = f.association :users, collection: User.all, label_method: ->(i){ i.email }, input_html: { 'data-width' => 200 }
-      = f.input :search, as: :search
+    %hr/
 
-    = f.submit
+    = annex_block :left_content
 
   .right.column
-    .check.toggle
-      %input#check-toggle{ name: "check", type: "checkbox", value: "None" }/
-      %label{ for: "check-toggle" }
+    %h3 About Annex
+    %p
+      %a{ href: 'https://github.com/unicorn/annex', target: '_blank' } Annex
+      is an inline CMS for Rails. It works with Mongoid or Active Record and allows you to edit text
+      wherever an annex block is defined. You can easily lock down permissions with cancan or other ACL gems.
 
-    .check.slide
-      %input#check-slide{ name: "check", type: "checkbox", value: "None" }/
-      %label{ for: 'check-slide' }
+    %p
+      Using it is easy. Once you are logged in, you will see areas with a slight border around them.
+      Click on these areas to activate the editor, and a rich formatting toolbar will appear at the top of the window.
+      To save either click the checkmark on the toolbar (or hit CMD+S) to save the content to the database.
 
-    .check.switch
-      %input#check-switch{name: "check", type: "checkbox", value: "None"}/
-      %label{for: "check-switch"}
 
-    .check.round.solid
-      %input#check-round-solid{name: "check", type: "checkbox", value: "None"}/
-      %label{for: "check-round-solid"}
 
-    .check.round.mark
-      %input#check-radio-mark{name: "check", type: "checkbox", value: "None"}/
-      %label{for: "check-radio-mark"}
+%section.row
+  %h2 Forms
+  = simple_form_for Example.new, html: { autocomplete: 'off' } do |f|
+    .left.column
+      = f.input :string
+      = f.input :integer, as: :integer
+      = f.input :float, as: :float
+      = f.input :decimal, as: :decimal
+      = f.input :range, as: :range
+      = f.input :square_solid_checkbox, as: :boolean, wrapper_html: { class: 'square solid' }
+      = f.input :email, as: :email
+      = f.input :url, as: :url
+      = f.input :phone, as: :tel
+      = f.input :password, as: :password
+      = f.input :search, as: :search
+      = f.input :uuid, as: :uuid
+      = f.input :file, as: :file
+      = f.input :date_time, as: :datetime
+      = f.input :date, as: :date
+      = f.input :time, as: :time
+      = f.input :select, as: :select, collection: { foo: 'bar', baz: 'bot' }
+      = f.input :radio, as: :radio_buttons, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'round solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
+      = f.input :checkbox, as: :check_boxes, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'square solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
 
-    .check.square.solid
-      %input#check-square-solid{ name: "check", type: "checkbox", value: "None" }/
-      %label{ for: "check-square-solid" }
+      .two.fields
+        = f.association :users, collection: User.all, label_method: ->(i){ i.email }, input_html: { 'data-width' => 200 }
+        = f.input :search, as: :search
 
-    .check.square.mark
-      %input#check-square-mark{ name: "check", type: "checkbox", value: "None" }/
-      %label{ for: "check-square-mark" }
+      = f.submit
 
-    .check.rounded.dark
-      %input#check-rounded-dark{name: "check", type: "checkbox", value: "None"}/
-      %label{for: "check-rounded-dark"}
+    .right.column
+      .check.toggle
+        %input#check-toggle{ name: "check", type: "checkbox", value: "None" }/
+        %label{ for: "check-toggle" }
 
-    .check.rounded.light
-      %input#check-rounded-light{name: "check", type: "checkbox", value: "None"}/
-      %label{for: "check-rounded-light"}
+      .check.slide
+        %input#check-slide{ name: "check", type: "checkbox", value: "None" }/
+        %label{ for: 'check-slide' }
+
+      .check.switch
+        %input#check-switch{name: "check", type: "checkbox", value: "None"}/
+        %label{for: "check-switch"}
+
+      .check.round.solid
+        %input#check-round-solid{name: "check", type: "checkbox", value: "None"}/
+        %label{for: "check-round-solid"}
+
+      .check.round.mark
+        %input#check-radio-mark{name: "check", type: "checkbox", value: "None"}/
+        %label{for: "check-radio-mark"}
+
+      .check.square.solid
+        %input#check-square-solid{ name: "check", type: "checkbox", value: "None" }/
+        %label{ for: "check-square-solid" }
+
+      .check.square.mark
+        %input#check-square-mark{ name: "check", type: "checkbox", value: "None" }/
+        %label{ for: "check-square-mark" }
+
+      .check.rounded.dark
+        %input#check-rounded-dark{name: "check", type: "checkbox", value: "None"}/
+        %label{for: "check-rounded-dark"}
+
+      .check.rounded.light
+        %input#check-rounded-light{name: "check", type: "checkbox", value: "None"}/
+        %label{for: "check-rounded-light"}
