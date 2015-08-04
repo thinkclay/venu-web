@@ -118,29 +118,19 @@
 
 .chosen-container-single {
   .chosen-single {
-    position: relative;
+    color: $base_dark;
     display: block;
+    height: 25px;
+    line-height: 24px;
     overflow: hidden;
     padding: 0 0 0 8px;
-    height: 25px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    background-color: #fff;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #f6f6f6), color-stop(52%, #eeeeee), color-stop(100%, #f4f4f4));
-    background: -webkit-linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
-    background: -moz-linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
-    background: -o-linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
-    background: linear-gradient(#ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
-    background-clip: padding-box;
-    box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
-    color: #444;
+    position: relative;
     text-decoration: none;
     white-space: nowrap;
-    line-height: 24px;
   }
 
   .chosen-default {
-    color: $base_light;
+    color: $base_dark;
   }
 
   .chosen-single span {
@@ -321,23 +311,6 @@
 
 /* @end */
 /* @group Active  */
-.chosen-container-active .chosen-single {
-  border: 1px solid #5897fb;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-}
-.chosen-container-active.chosen-with-drop .chosen-single {
-  border: 1px solid #aaa;
-  -moz-border-radius-bottomright: 0;
-  border-bottom-right-radius: 0;
-  -moz-border-radius-bottomleft: 0;
-  border-bottom-left-radius: 0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #eeeeee), color-stop(80%, #ffffff));
-  background-image: -webkit-linear-gradient(#eeeeee 20%, #ffffff 80%);
-  background-image: -moz-linear-gradient(#eeeeee 20%, #ffffff 80%);
-  background-image: -o-linear-gradient(#eeeeee 20%, #ffffff 80%);
-  background-image: linear-gradient(#eeeeee 20%, #ffffff 80%);
-  box-shadow: 0 1px 0 #fff inset;
-}
 .chosen-container-active.chosen-with-drop .chosen-single div {
   border-left: none;
   background: transparent;
@@ -436,11 +409,15 @@
 
 .input {
   &.string, &.email, &.file, &.text, &.password, &.integer, &.url, &.tel, &.search, &.uuid, &.float,
-  &.decimal, &.range, &.datetime, &.date, &.time, &.select, &.radio_buttons >, &.check_boxes > {
+  &.decimal, &.range, &.datetime, &.date, &.time, &.select, &.image, &.radio_buttons >, &.check_boxes > {
     label {
       display: block;
       font-size: 1.8rem;
       padding: 1.5em 0 .5em;
+    }
+
+    img {
+      margin: .5rem 0 1rem;
     }
   }
 }
@@ -970,7 +947,7 @@ check {
 .two.fields {
   @extend %clearfix;
 
-  div.input {
+  > div.input {
     width: 48%;
 
     &:first-child {
@@ -980,6 +957,21 @@ check {
 
     &:last-child {
       float: right;
+    }
+  }
+}
+
+.three.fields {
+  @extend %clearfix;
+
+  > div.input {
+    float: left;
+    margin-right: 1%;
+    width: 32.6%;
+
+    &:last-child {
+      float: right;
+      margin-right: 0;
     }
   }
 }

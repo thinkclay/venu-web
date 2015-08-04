@@ -4,8 +4,11 @@
 //= require_tree .
 
 ready = ->
-  $("select[multiple=multiple]").chosen
-    width: '95%'
+  $(".input.select select").chosen
+    width: '100%'
+
+  $(".input.datetime select, .input.date select, .input.time select").chosen
+    width: '18%'
 
   return
 
