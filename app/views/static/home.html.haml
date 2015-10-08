@@ -98,6 +98,7 @@
       = f.input :date, as: :date
       = f.input :time, as: :time
       = f.input :select, as: :select, collection: { foo: 'bar', baz: 'bot' }
+      = f.input :radio, as: :radio_buttons, collection: [[:small, 0], [:medium, 4], [:large, 8]], item_wrapper_class: 'buttons group', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
       = f.input :radio, as: :radio_buttons, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'round solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
       = f.input :checkbox, as: :check_boxes, collection: { foo: 'bar', baz: 'bot' }, item_wrapper_class: 'square solid', label_method: lambda { |i| "<span>#{i[0]}</span>".html_safe }
 

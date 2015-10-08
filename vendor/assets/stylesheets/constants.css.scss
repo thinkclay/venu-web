@@ -1,0 +1,59 @@
+// Breakpoints
+$breakpoint_small: 600px;
+$breakpoint_medium: 800px;
+$breakpoint_large: 1200px;
+
+// Layout
+$container_width: 1200px;
+
+// Base Colors
+$base_light : #F4F0E8;
+$base_dark: #7C705F;
+$base_medium: #99896F;
+
+// Brand Colors
+$brand_blue: #3D728E;
+$brand_green: #54835F;
+$brand_teal: #3D8C8E;
+$brand_orange: #B36E50;
+$brand_yellow: #C0A962;
+$brand_red: #B35050;
+
+// Other Colors
+$label_color: $base_medium;
+$link_color: $brand_teal;
+
+// Typography
+$font_header: 'Rokkitt', 'Oswald', serif;
+$font_body: 'Radikal', 'Josefin Sans', sans-serif;
+$font_display: 'Radikal', 'Josefin Sans', sans-serif;
+$font_monospace: Consolas, Monaco, 'Andale Mono', monospace;
+
+%clearfix {
+  &:after {
+    clear: both;
+    content: " ";
+    display: block;
+  }
+}
+
+%font_body {
+  font-family: $font_body;
+}
+
+%font_header {
+  font-family:  $font_header;
+}
+
+%font_display {
+  font-family: $font_display;
+}
+
+.container {
+  @extend %clearfix;
+  clear: both;
+  margin: 0 auto;
+  max-width: $container_width;
+  padding: 2rem 5%;
+  position: relative;
+}

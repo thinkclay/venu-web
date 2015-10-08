@@ -1,0 +1,46 @@
+@import 'constants';
+
+.modal {
+  background: #fff;
+  box-shadow: 0 0 10px #000;
+  display: none;
+  max-width: 800px;
+  padding: 2%;
+  width: 80%;
+
+  a.close-modal {
+    color: $brand_red;
+    display: block;
+    font-size: 4rem;
+    font-weight: 500;
+    height: 30px;
+    line-height: 2.7rem;
+    position: absolute;
+    right: -3rem;
+    text-align: center;
+    top: -2.5rem;
+    vertical-align: middle;
+    width: 30px;
+
+    &:hover {
+      color: lighten($brand_red, 10%);
+    }
+  }
+}
+
+.modal-spinner {
+  display: none;
+  width: 64px;
+  height: 64px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-right: -32px;
+  margin-top: -32px;
+  background: url(spinner.gif) #111 no-repeat center center;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -o-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+}

@@ -8,10 +8,10 @@
   border: 1px solid $base_medium;
   display: inline-block;
   font-size: 1.6rem;
-  font-weight: 500;
-  height: 4.2rem;
+  font-weight: 300;
+  height: auto;
   width: 100%;
-  padding: .5em;
+  padding: .25em;
   position: relative;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -47,7 +47,6 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-weight: normal;
     color: $base_light;
   }
 
@@ -100,7 +99,6 @@
 
       &.group-result {
         display: list-item;
-        font-weight: bold;
         cursor: default;
       }
 
@@ -120,10 +118,10 @@
   .chosen-single {
     color: $base_dark;
     display: block;
-    height: 25px;
+    height: 30px;
     line-height: 24px;
     overflow: hidden;
-    padding: 0 0 0 8px;
+    padding: .3rem 0 0 .8rem;
     position: relative;
     text-decoration: none;
     white-space: nowrap;
@@ -176,7 +174,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: url('chosen-sprite.png') no-repeat 0px 2px;
+      background: url('chosen-sprite.png') no-repeat 0px 6px;
     }
   }
 
@@ -254,8 +252,8 @@
         color: rgba(255, 255, 255, 0.8);
         cursor: default;
         display: inline-block;
-        line-height: 1;
-        margin: 0 .5rem 0 0;
+        line-height: 1.1em;
+        margin: .5rem;
         max-width: 100%;
         padding: .35rem 2rem .35rem .5rem;
         position: relative;
@@ -271,7 +269,7 @@
           height: 12px;
           position: absolute;
           right: 3px;
-          top: .6rem;
+          top: .7rem;
           width: 12px;
 
           &:hover {
@@ -309,20 +307,18 @@
   }
 }
 
-/* @end */
 /* @group Active  */
 .chosen-container-active.chosen-with-drop .chosen-single div {
   border-left: none;
   background: transparent;
 }
 .chosen-container-active.chosen-with-drop .chosen-single div b {
-  background-position: -18px 2px;
+  background-position: -18px 6px;
 }
 .chosen-container-active .chosen-choices li.search-field input[type="text"] {
   color: #222 !important;
 }
 
-/* @end */
 /* @group Disabled Support */
 .chosen-disabled {
   opacity: 0.5 !important;
@@ -335,7 +331,6 @@
   cursor: default;
 }
 
-/* @end */
 /* @group Right to Left */
 .chosen-rtl {
   text-align: right;
@@ -402,7 +397,6 @@
   background-position: -12px 2px;
 }
 
-/* @end */
 /* @group Retina compatibility */
 
 
@@ -412,7 +406,7 @@
   &.decimal, &.range, &.datetime, &.date, &.time, &.select, &.image, &.radio_buttons >, &.check_boxes > {
     label {
       display: block;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       padding: 1.5em 0 .5em;
     }
 
@@ -423,38 +417,59 @@
 }
 
 input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="url"],
-input[type="tel"], input[type="search"], input[type="uuid"], textarea {
+input[type="tel"], input[type="search"], input[type="uuid"], input[type="date"], textarea {
   @extend %font_body;
   background: darken($base_light, 5%);
   box-sizing: border-box;
   color: $base_dark;
   border: 1px solid $base_medium;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 300;
   height: 4.2rem;
   width: 100%;
   padding: .75em;
 }
 
-input[type="submit"], .button {
+textarea {
+  min-height: 7rem;
+}
+
+input[type="submit"], .button, .buttons label {
   @extend %font_header;
   background: lighten($brand_teal, 10%);
   border: none;
   box-shadow: inset 0 0 1px rgba(0, 0, 0, 1);
-  color: rgba(255, 255, 255, 0.8);
+  clear: both;
+  color: rgba(255, 255, 255, 0.8) !important;
   cursor: pointer;
+  display: inline-block;
   font-size: 1.8rem;
-  font-weight: 100;
-  letter-spacing: .05em;
-  margin: 1.5em 0 .5em;
+  font-weight: 300;
   padding: .5em 1.25em;
   text-transform: uppercase;
+  vertical-align: middle;
 
-  &.yellow {
+  &.white, &.white label {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  &.black, &.black label {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &.green, &.green label {
+    background: lighten($brand_green, 10%);
+  }
+
+  &.yellow, &.yellow label {
     background: lighten($brand_yellow, 10%);
   }
 
-  &.red {
+  &.orange, &.orange label {
+    background: lighten($brand_orange, 10%);
+  }
+
+  &.red, &.red label {
     background: lighten($brand_red, 10%);
   }
 
@@ -465,6 +480,10 @@ input[type="submit"], .button {
 
   &:active {
     box-shadow: inset 0 0 1px rgba(0, 0, 0, 1), inset 0 0 3px rgba(0, 0, 0, 0.5);
+  }
+
+  &.small {
+    font-size: 1.4rem;
   }
 
   &.mini {
@@ -492,11 +511,10 @@ input[type="submit"], .button {
     cursor: pointer;
     display: inline-block;
     font-size: 1.4rem;
-    font-weight: 100;
-    letter-spacing: .05em;
+    font-weight: 300;
     margin: -.75em 0 .5em;
     outline: none;
-    padding: .5em 1.25em;
+    padding: .5em 1em;
     text-transform: uppercase;
     white-space: nowrap;
   }
@@ -525,8 +543,8 @@ input[type="submit"], .button {
 
   label span {
     display: block;
-    font-size: 1.8rem;
-    margin: .75rem 0 0 4rem;
+    font-size: 1.6rem;
+    margin: .0 0 0 4rem;
     white-space: nowrap;
   }
 
@@ -937,6 +955,23 @@ input[type="submit"], .button {
       }
     }
   }
+
+  &.buttons.group {
+    display: inline;
+    margin: 0;
+
+    input {
+      position: absolute;
+    }
+
+    input:checked + label {
+      background-color: $base_dark;
+    }
+
+    label span {
+      margin: 0;
+    }
+  }
 }
 
 check {
@@ -944,8 +979,15 @@ check {
   margin: 0 0 1rem;
 }
 
+form {
+  input[type="submit"], .button {
+    margin: 1.5rem 0 .5rem;
+  }
+}
+
 .two.fields {
   @extend %clearfix;
+  clear: both;
 
   > div.input {
     width: 48%;
