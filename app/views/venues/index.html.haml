@@ -1,0 +1,24 @@
+%h1 Listing venues
+
+%table
+  %thead
+    %tr
+      %th Banner
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @venues.each do |venue|
+      %tr
+        %td
+          %img{ src: venue.banner, width: '200px' }
+        %td= venue.name
+        %td= link_to 'Show', venue
+        %td= link_to 'Edit', edit_venue_path(venue)
+        %td= link_to 'Destroy', venue, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Venue', new_venue_path

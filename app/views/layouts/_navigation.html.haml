@@ -4,6 +4,7 @@
 
     - if user_signed_in? && current_user.has_role?(:admin)
       = nav_link t('admin.users'), users_path
+      = nav_link t('admin.venues'), venues_path
 
   .right.menu
     - if user_signed_in?

@@ -1,4 +1,11 @@
 Manticore::Application.routes.draw do
+
+  namespace :api, defaults: { format: :json }, path: '/api' do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      resources :venues, defaults: { resource: 'Venue' }
+    end
+  end
+
   authenticated :user do
     root to: 'static#home', as: :authenticated_root
   end
@@ -14,6 +21,7 @@ Manticore::Application.routes.draw do
   }
 
   resources :users
+  resources :venues
   resources :examples
 
   get 'static/home'
